@@ -1,29 +1,16 @@
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { auth, firebase } from '../services/firebase';
 
 import imgIllustration from '../assets/images/illustration.svg';
 import imgLogo from '../assets/images/logo.svg';
-import imgGoogleIcon from '../assets/images/google-icon.svg';
 
 import '../styles/auth.scss';
 
 import { TestContext } from '../App';
 
-export function Home() {
-  const navigate = useNavigate();
+export function NewRoom() {
   const { value, setValue } = useContext(TestContext);
-
-  function handleCreateRoom() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    auth.signInWithPopup(provider).then(result => {
-      console.log(result);
-      navigate('/rooms/new');
-    })
-
-  }
 
   return (
     <div className="page-auth">
@@ -35,26 +22,26 @@ export function Home() {
       </aside>
 
       <main>
-        <h1>{value}</h1>
+        <h2>{value}</h2>
         <div className="main-content">
           <img src={imgLogo} alt="Letmeask" />
-          <button className="create-room" onClick={handleCreateRoom}>
-            <img src={imgGoogleIcon} alt="Logo do Google" />
-            Crie sua sala com o Google
-          </button>
-          <div className="separator">ou entre em uma sala</div>
-          <form>
+
+          <h2>Criar uma nova sala</h2>
+
+          <form action="">
             <input
               type="text"
-              placeholder="Digite o código da sala"
+              placeholder="Nome da sala"
             />
             <Button type="submit">
-              Entrar na sala
+              Criar sala
             </Button>
           </form>
+          <p>
+            Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link>
+          </p>
         </div>
       </main>
-
     </div>
   )
 }

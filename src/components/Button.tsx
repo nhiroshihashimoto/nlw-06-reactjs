@@ -1,9 +1,19 @@
+import { useState } from 'react';
+
 type ButtonProps = {
-    text?: string;
+    text?: string
 }
 
 export function Button(props: ButtonProps) {
+    const [counter, setCounter] = useState(0)
+
+    function increment() {
+        setCounter(counter + 1)
+    }
+
     return (
-        <button>{props.text || 'Clique aqui'}</button>
+        <button onClick={increment}>
+            {counter}
+        </button>
     )
 }

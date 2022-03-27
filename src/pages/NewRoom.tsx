@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 
@@ -7,11 +6,7 @@ import imgLogo from '../assets/images/logo.svg';
 
 import '../styles/auth.scss';
 
-import { TestContext } from '../App';
-
 export function NewRoom() {
-  const { value, setValue } = useContext(TestContext);
-
   return (
     <div className="page-auth">
 
@@ -22,7 +17,6 @@ export function NewRoom() {
       </aside>
 
       <main>
-        <h2>{value}</h2>
         <div className="main-content">
           <img src={imgLogo} alt="Letmeask" />
 
